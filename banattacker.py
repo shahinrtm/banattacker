@@ -59,7 +59,8 @@ if badip_count != None:
     for ip in badip_count:
         if badip_count[ip] > 10:
             result = ban_ip(ip)
-            print(ip), print(result[f"{ip}"])
+            print(ip)
+            print(result[f"{ip}"])
 
 relood_ufw(ip)
 print("done")
