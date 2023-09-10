@@ -17,10 +17,16 @@ def get_online_users(port):
 def get_online_info(port):
     online_users = get_online_users(port)
     atacker_count = {}
-    pattern = r'(\d+\.\d+\.\d+\.\d+):https'
-    matches = re.findall(pattern, online_users)
-    for ipz in matches:
-        atacker_count[ipz] = atacker_count.get(ipz, 0) + 1
+    ip_pattern = r"(\d+\.\d+\.\d+\.\d+)"
+    for user in online_users:
+        user = re.sub('\s+', ' ', user)
+        user_array = user.split(" ")
+
+        if len(user_array) >= 3 and "https" in user_array:
+            matches = re.findall(ip_pattern, user_array[8])
+            if len(matches) == 2:
+                ipz = matches[1]
+                atacker_count[ipz] = atacker_count.get(ipz, 0) + 1
     print(atacker_count)
     return atacker_count
 
