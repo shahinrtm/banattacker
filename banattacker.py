@@ -66,3 +66,4 @@ if badip_count != None:
 
 relood_ufw()
 print("done")
+sudo ufw insert 1 allow from 443
