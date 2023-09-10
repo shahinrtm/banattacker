@@ -27,7 +27,8 @@ def get_online_info(port):
             if len(matches) == 2:
                 ipz = matches[1]
                 atacker_count[ipz] = atacker_count.get(ipz, 0) + 1
-
+    print (atacker_count)
+    return atacker_count
 
 def ban_ip(ip):
     banip_command = "sudo ufw insert 1 deny from {}".format(ip)
@@ -43,9 +44,7 @@ def ban_ip(ip):
 
 
 
-data = get_online_info(443)
-online_count = data[0]
-badip_count = data[3]
+badip_count = get_online_info(443)
 if badip_count != None:
     for ip in badip_count:
         if badip_count[ip] > 3 :
