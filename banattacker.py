@@ -4,6 +4,7 @@ import re
 
 def get_online_users(port):
     list_cmd = f"sudo lsof -i:{port} -n |  grep ESTABLISHED"
+
     try:
         list_output = subprocess.check_output(
             list_cmd, shell=True, stderr=subprocess.DEVNULL).decode("utf-8")
@@ -21,8 +22,8 @@ def get_online_info(port):
     for user in online_users:
         user = re.sub('\s+', ' ', user)
         user_array = user.split(" ")
-
-        if len(user_array) >= 3 and "https" in user_array:
+        print(user_array)
+        if len(user_array) >= 3 and "https" in user_array[8]:
             matches = re.findall(ip_pattern, user_array[8])
             if len(matches) == 2:
                 ipz = matches[1]
