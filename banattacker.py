@@ -22,12 +22,16 @@ def get_online_info(port):
     for user in online_users:
         user = re.sub('\s+', ' ', user)
         user_array = user.split(" ")
-        print(user_array)
-        if len(user_array) >= 3 and "https" in user_array[8]:
+        if len(user_array) >= 3:
             matches = re.findall(ip_pattern, user_array[8])
             if len(matches) == 2:
+                print(matches[0])
+                print(matches[1])
+                print(matches[2])
+                print(matches[3])
                 ipz = matches[1]
                 atacker_count[ipz] = atacker_count.get(ipz, 0) + 1
+                return
     print(atacker_count)
     return atacker_count
 
