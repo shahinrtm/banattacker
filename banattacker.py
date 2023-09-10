@@ -64,5 +64,5 @@ if badip_count != None:
             result = ban_ip(ip)
             print(ip)
 
-relood_ufw(ip)
+relood_ufw()
 print("done")
