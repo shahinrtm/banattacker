@@ -24,14 +24,13 @@ def get_online_info(port):
         user_array = user.split(" ")
         if len(user_array) >= 3:
             matches = re.search(ip_pattern, user_array[8])
-            if len(matches) == 2:
-                source_ip = matches.group(1)
-                source_port = matches.group(2)
-                dest_ip = matches.group(3)
-                dest_port = matches.group(4)
-                if "https" == dest_port:
-                    ipz = dest_ip
-                    atacker_count[ipz] = atacker_count.get(ipz, 0) + 1
+            source_ip = matches.group(1)
+            source_port = matches.group(2)
+            dest_ip = matches.group(3)
+            dest_port = matches.group(4)
+            if "https" == dest_port:
+                ipz = dest_ip
+                atacker_count[ipz] = atacker_count.get(ipz, 0) + 1
     print(atacker_count)
     return atacker_count
 
